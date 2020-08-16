@@ -1,0 +1,17 @@
+Catatan Penting :
+1. Folder App -> Folder inti dari CI4
+
+
+2. Folder Public -> - Folder tempat menyimpan Asset Project.
+                    - Secara Default sudah ada file .htacces untuk preety URL. menggunakan fitur mode Re-Write.
+                    - fave icon.
+                    - index.php -> file Bootstrapnya : satu file yangakan membawa file2 lainnya.
+                    - robots.txt -> buat Search Engine.
+3. Folder Test -> Folder untuk menjalankan aplikasi testing.
+4. Folder Vendor -> Folder tempat menyimpan dependency dari file project kita, dikelola oleh file 'composer.json' otmatis diisi oleh composernnya.
+5. Folder Writeable -> Folder dimana Codeigniter nya akan menulis sesuatu scara  otomatis ke sini untuk cache debug log dll. tidak untuk dimodif.
+6. File env -> - file template untuk konfigurasi environment, harus dire-name menjadi .env supaya jadi file system. Copy dulu aja penting sebelum di rename.
+               - yang biasa di ubah adalah CI_ENVIRONEMENT jadi = development (kalo lagi bikin aplikasi). default nya production.
+               - ganti app.baseURL = 'http://localhost:8080' kalo pake php spark serve.
+
+
