@@ -7,9 +7,9 @@ class Coba extends BaseController
 		echo "ini controller Coba method index";
     }
     
-    public function about()
+    public function about($nama = '')
     {
-        echo "Hallo Nama Saya $this->nama.";
+        echo "Hallo Nama Saya $nama.";
     }
 
 	//--------------------------------------------------------------------
