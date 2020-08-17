@@ -1,5 +1,25 @@
 Catatan Penting :
-1. Folder App -> Folder inti dari CI4
+1. Folder App -> Folder inti dari CI4 :
+                        *Config->Routes.php -> sebuah file yg akan menentukan jalur dari aplikasi kita.
+                                            -> $routes->get('/' 'Home::index'); ini maksudnya :
+                                                Ci akan membuat jalur ketika ada akses yg method req. get (mengetikan sesuatu di URL)
+                                                alamatnya adalah slash '/' (root) arahkan ke Controller Home dan methodnya Index.
+                                                secara defultnya Controller nya Home method nya index, file nya ada di folder App -> Controllers -> Home.php dan methodnya index,
+                                                ketika method ini dipanggil method nya mengembalikan sebuah view.
+                                                Secara Default URL kita mempunyai segment (string yg dibatasi oleh '/'), slash yg pertama adalah: Controller,
+                                                slash yg kedua adalah: Method.
+                                                * Apabila kita membuat Controller Baru yang mengextend dari Controller BaseController.php, kita tidak perlu menambhakan root baru sealama aturanya memenuhi ('controller/method').
+                                                  Kalaupun kita tulis juga tidak apa2, kita bisa menambah root baru dengan cara $routes->add('/coba', 'Coba::index');. method nya
+                                                  tidak selalu add() bisa juga pake get(), post(), delete() dll,, supaya lebih aman dan efektif. 
+                                                  selanjutnya kita juga bisa tidak memanggil Controller atau method, kita bisa meggunakan sesuatu yang dinamakan Closures (Anonymous FUnction) sebagai paramter nya.
+                                            -> Kita bisa menambahkan '/' slash lagi untuk mengirimkan data sebagai parameter di segment URL, cara nya kita tinggal jadikan sebagai parameter di methodnya.
+                                               kita juga bs memanipulasi rooting ini dengan cara membuat routes baru method nya get {$routes->get('/coba/(:any)/(:num)', 'Coba::about/$1/$2');}, ini namanya teknik templating (palceholder).
+                                               *Jangan lupa bikin Routes baru untuk menangani jika ada yg menangani ketika ada yg mengaskes method nya. {$routes->get('/coba/index', 'Coba::index');}
+                                                dan {$routes->get('/coba/about', 'Coba::about');}
+                                            -> Kita Juga Bisa menyimpan si Controller kita kedalam sebuah nameSpace atau folder lagi, caranya betulin nameSpace nya sesuai posisi foldernya, dan jangan lupa di arahkan dengan cara
+                                               use App\Controllers\BaseController;. dan benerin Routes-nya ->  $routes->('/users', 'Admin\Users::index');
+                                            -> Semuanya diatur jalurnya oleh Routes, jadi penting banget pemahaman Routes ini. Pleajari lebih jauh.  
+
 
 
 2. Folder Public -> - Folder tempat menyimpan Asset Project.
