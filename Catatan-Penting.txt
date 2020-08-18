@@ -19,7 +19,29 @@ Catatan Penting :
                                             -> Kita Juga Bisa menyimpan si Controller kita kedalam sebuah nameSpace atau folder lagi, caranya betulin nameSpace nya sesuai posisi foldernya, dan jangan lupa di arahkan dengan cara
                                                use App\Controllers\BaseController;. dan benerin Routes-nya ->  $routes->('/users', 'Admin\Users::index');
                                             -> Semuanya diatur jalurnya oleh Routes, jadi penting banget pemahaman Routes ini. Pleajari lebih jauh.  
-
+                        *Views -> sebuah file yg menangani view/tampilan dari aplikasi kita.
+                               -> konfigurasi nya tetap di kontrol oleh Controller yang kita buat dahulu sebelumnya di folder Controllers,
+                               -> biasakan sesuaikan dengan Routes nya default URL di setting ke view yg ingin kita tampilkan / ubah setting Routes-nya.
+                               -> di CI4 ini ada metode baru untuk menangani view dengan cara layout template, yang membuat placeholder/template jadi lebih rapih, metodenya yaitu 
+                                  Layout View dengan membuat file template.php di folder layout dengan fungsi <?= $this->renderSection('content'); ?>, buka pake tag echo php lalu apa nama content nya,,
+                                  kemudian cara make nya extend renderSection tadi di masing2 halaman view nya <?= $this->extend('layout/template'); ?>, dan pemakaiannya :
+                                  <?= $this->section('content'); ?>
+                                    <div class="container">
+                                       <div class="row">
+                                          <div class="col">
+                                                <h2>Contact Us</h2>
+                                                <?php foreach($alamat as $a): ?>
+                                                   <ul>
+                                                      <li><?= $a['tipe']; ?></li>
+                                                      <li><?= $a['alamat']; ?></li>
+                                                      <li><?= $a['kota']; ?></li>
+                                                   </ul>
+                                                <?php endforeach; ?>
+                                          </div>
+                                       </div>
+                                    </div>
+                                  <?= $this->endSection(); ?>
+                                  
 
 
 2. Folder Public -> - Folder tempat menyimpan Asset Project.
