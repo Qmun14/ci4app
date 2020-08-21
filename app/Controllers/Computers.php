@@ -15,11 +15,11 @@ class Computers extends BaseController
 
     public function index()
     {
-        $computer = $this->computerModel->findAll();
+        // $computer = $this->computerModel->findAll();
 
         $data = [
             'title' => 'Daftar Komputer',
-            'computer' => $computer
+            'computer' => $this->computerModel->getComputer()
         ];
 
         // cara konek db tanpa model
@@ -33,5 +33,14 @@ class Computers extends BaseController
         
 
         return view('computer/index', $data);
+    }
+
+    public function detail($slug) 
+    {
+        $data = [
+            'title' => 'Detail PC',
+            'computer' => $this->computerModel->getComputer($slug)
+        ];
+        return view('computer/detail', $data);
     }
 }
