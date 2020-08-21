@@ -41,7 +41,8 @@ Catatan Penting :
                                        </div>
                                     </div>
                                   <?= $this->endSection(); ?>
-                                  
+                        *Models -> Model adalah menyediakan cara untuk berinteraksi dengan table yang spesifik di dalam database kita. di CI4 di dalamnya sudah ada method helpers yg membantu kita 
+                                   untuk berinteraksi dengan database kita dengan cara yg standard.                                   
 
 
 2. Folder Public -> - Folder tempat menyimpan Asset Project.
