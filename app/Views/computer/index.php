@@ -4,7 +4,13 @@
 <div class="container">
     <div class="row">
         <div class="col">
+            <a href="/computers/create" class="btn btn-primary mt-3">Tambah Data PC</a>
             <h1 class="mt-2">Daftar Data PC</h1>
+            <?php if(session()->getFlashdata('pesan')) : ?>
+                <div class="alert alert-success" role="alert">
+                    <?= session()->getFlashdata('pesan'); ?>
+                </div>
+            <?php endif; ?>
             <table class="table table-hover">
             <thead>
                 <tr>

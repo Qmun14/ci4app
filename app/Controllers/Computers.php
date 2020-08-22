@@ -31,6 +31,41 @@ class Computers extends BaseController
             'title' => 'Detail PC',
             'computer' => $this->computerModel->getComputer($slug)
         ];
+
+        // jika computer tidak ada di tabel
+        if(empty($data['computer'])){
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Nama Vendor ' .  $slug . ' tidak ditemukan.');
+        }
+
         return view('computer/detail', $data);
     }
+
+    public function create()
+    {
+        $data = [
+            'title' => 'Form Tambah Data PC'
+
+        ];
+
+        return view('computer/create', $data);
+    }
+
+    public function save()
+    {
+        $slug = url_title($this->request->getVar('vendor'), '-', true);
+        $this->computerModel->save([
+            'vendor' => $this->request->getVar('vendor'),
+            'slug' => $slug,
+            'cpu' => $this->request->getVar('cpu'),
+            'ram' => $this->request->getVar('ram'),
+            'hdd' => $this->request->getVar('hdd'),
+            'foto' => $this->request->getVar('foto')
+        ]);
+
+        session()->setFlashdata('pesan', 'Data berhasil ditambahkan.');
+
+        return redirect()->to('/computers');
+
+    }
+
 }

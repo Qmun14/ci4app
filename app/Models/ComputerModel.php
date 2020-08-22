@@ -8,6 +8,7 @@ class ComputerModel extends Model
 {
     protected $table = 'computer';
     protected $useTimestamps = true;
+    protected $allowedFields = ['vendor', 'slug', 'cpu', 'ram', 'hdd', 'foto'];
 
     public function getComputer($slug = false)
     {
@@ -17,5 +18,5 @@ class ComputerModel extends Model
 
         return $this->where(['slug' => $slug])->first();
     }
-    
+
 }

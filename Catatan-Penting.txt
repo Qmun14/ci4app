@@ -55,7 +55,10 @@ Catatan Penting :
                                        protected $useTimestamps = true;  --> ini timestamp untuk crated_at dan updated_at
                                     konfigurasi nya samakan dengan kelas Model Utama CI4 nya (cari di ctrl + p ketik model), disini cari yang kalo tidak ada nilai defautnya wajib di isi dengan
                                     konfig sesuai aplikasi yang ingin kita bangun.
-                                    dengan cara ini saja kita sudah bisa menghubungkan Ci4 kita dengan Database(table).                           
+                                    dengan cara ini saja kita sudah bisa menghubungkan Ci4 kita dengan Database(table).
+                        ****
+                        *CRUD di CI4 :
+                        1. Create ->                            
 
 
 2. Folder Public -> - Folder tempat menyimpan Asset Project.
