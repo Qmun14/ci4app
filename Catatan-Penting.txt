@@ -42,7 +42,20 @@ Catatan Penting :
                                     </div>
                                   <?= $this->endSection(); ?>
                         *Models -> Model adalah menyediakan cara untuk berinteraksi dengan table yang spesifik di dalam database kita. di CI4 di dalamnya sudah ada method helpers yg membantu kita 
-                                   untuk berinteraksi dengan database kita dengan cara yg standard.                                   
+                                   untuk berinteraksi dengan database kita dengan cara yg standard.
+                                   - di CI4 kita bisa mengatur konfigurasi database nya di file .env dengan konfig sbb:
+                                       database.default.hostname = localhost
+                                       database.default.database = ci4
+                                       database.default.username = root
+                                       database.default.password = 
+                                       database.default.DBDriver = MySQLi
+                                    dengan catatan hidupkan dengan hapus tanda pagar di depannya.
+                                   - ada beberapa property yang harus kita isi didalam Model cek di documentasi CI nya sbb:
+                                       protected $table = 'computer'; --> ini nama table yg kita pakai di model ini
+                                       protected $useTimestamps = true;  --> ini timestamp untuk crated_at dan updated_at
+                                    konfigurasi nya samakan dengan kelas Model Utama CI4 nya (cari di ctrl + p ketik model), disini cari yang kalo tidak ada nilai defautnya wajib di isi dengan
+                                    konfig sesuai aplikasi yang ingin kita bangun.
+                                    dengan cara ini saja kita sudah bisa menghubungkan Ci4 kita dengan Database(table).                           
 
 
 2. Folder Public -> - Folder tempat menyimpan Asset Project.

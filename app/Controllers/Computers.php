@@ -6,11 +6,11 @@ use App\Models\ComputerModel;
 
 class Computers extends BaseController
 {
-    protected $computerModel;
+    protected $computerModel; //**Property untuk $computerModel supaya bisa dipake di kelas ini dan kelas turunannya
 
     public function __construct()
     {
-        $this->computerModel = new ComputerModel();
+        $this->computerModel = new ComputerModel();  // **semua method bisa pake di kelas model ini, syaratnya harus buat property kayak di atas.
     }
 
     public function index()
@@ -20,17 +20,7 @@ class Computers extends BaseController
         $data = [
             'title' => 'Daftar Komputer',
             'computer' => $this->computerModel->getComputer()
-        ];
-
-        // cara konek db tanpa model
-        // $db = \Config\Database::connect();
-        // $komik = $db->query("SELECT * FROM computer");
-        // foreach ($komik->getResultArray() as $row) {
-        //     d($row);
-        // }
-
-        // $computerModel = new \App\Models\ComputerModel();
-        
+        ];        
 
         return view('computer/index', $data);
     }
