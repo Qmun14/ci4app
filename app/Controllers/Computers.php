@@ -42,8 +42,10 @@ class Computers extends BaseController
 
     public function create()
     {
+        // session(); ->biar gak lupa taro aja sessionya di BaseController.php
         $data = [
-            'title' => 'Form Tambah Data PC'
+            'title' => 'Form Tambah Data PC',
+            'validation' => \Config\Services::validation()
 
         ];
 
@@ -52,6 +54,20 @@ class Computers extends BaseController
 
     public function save()
     {
+        // validasi input
+        if(!$this->validate([
+            'vendor' => [
+                'rules' => 'required|is_unique[computer.vendor]',
+                'errors' => [
+                    'required' => '{field} komputer harus diisi.',
+                    'is_unique' => '{field} computer sudah ada.'
+                ]
+            ]
+        ])) {
+            $validation = \Config\Services::validation();
+            return redirect()->to('/computers/create')->withInput()->with('validation', $validation);
+        }
+
         $slug = url_title($this->request->getVar('vendor'), '-', true);
         $this->computerModel->save([
             'vendor' => $this->request->getVar('vendor'),

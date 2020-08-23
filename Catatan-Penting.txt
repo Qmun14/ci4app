@@ -58,7 +58,56 @@ Catatan Penting :
                                     dengan cara ini saja kita sudah bisa menghubungkan Ci4 kita dengan Database(table).
                         ****
                         *CRUD di CI4 :
-                        1. Create ->                            
+                        1. Create ->  Buat dahulu Controller create() :
+
+                                       public function create()
+                                       {
+                                          // session(); ->biar gak lupa taro aja sessionya di BaseController.php
+                                          $data = [
+                                                'title' => 'Form Tambah Data PC',
+                                                'validation' => \Config\Services::validation()
+
+                                          ];
+
+                                          return view('computer/create', $data);
+                                       }
+
+                           lalu buat form create.php untuk mengisi/memasukan data yang akan di insert ke DB. arahkan Controller tadi ke view ini.
+                           di method create ini kita sedikit menambahkan validasi untuk keamanan dalam proses penginputannya menggunakan bantuan dari fungsi
+                           validation() bawaan CI4 nya. Buat juga method save di Controller nya untuk simpan ke DB di MySQL nya. :
+                                       public function save()
+                                       {
+                                          // validasi input
+                                          if(!$this->validate([
+                                                'vendor' => [
+                                                   'rules' => 'required|is_unique[computer.vendor]',
+                                                   'errors' => [
+                                                      'required' => '{field} komputer harus diisi.',
+                                                      'is_unique' => '{field} computer sudah ada.'
+                                                   ]
+                                                ]
+                                          ])) {
+                                                $validation = \Config\Services::validation();
+                                                return redirect()->to('/computers/create')->withInput()->with('validation', $validation);
+                                          }
+
+                                          $slug = url_title($this->request->getVar('vendor'), '-', true);
+                                          $this->computerModel->save([
+                                                'vendor' => $this->request->getVar('vendor'),
+                                                'slug' => $slug,
+                                                'cpu' => $this->request->getVar('cpu'),
+                                                'ram' => $this->request->getVar('ram'),
+                                                'hdd' => $this->request->getVar('hdd'),
+                                                'foto' => $this->request->getVar('foto')
+                                          ]);
+
+                                          session()->setFlashdata('pesan', 'Data berhasil ditambahkan.');
+
+                                          return redirect()->to('/computers');
+
+                                       }
+                           method url_title() di atas untuk menggenerate $slug dengan data dari field 'vendor'.
+                           method withInput()->with() di atas untuk menyimpan data pada fungsi session() bawaan CI4 nya supaya bisa dipakai di mana aja.                         
 
 
 2. Folder Public -> - Folder tempat menyimpan Asset Project.

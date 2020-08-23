@@ -11,31 +11,34 @@
                 <div class="form-group row">
                     <label for="vendor" class="col-sm-2 col-form-label">Vendor</label>
                     <div class="col-sm-10">
-                    <input type="text" class="form-control" id="vendor" name="vendor" autofocus>
-                    </div>
+                    <input type="text" class="form-control <?= ($validation->hasError('vendor')) ? 'is-invalid' : ''; ?>" id="vendor" name="vendor" autofocus value="<?= old('vendor'); ?>">
+                    <div class="invalid-feedback">
+                        <?= $validation->getError('vendor'); ?>
+                    </div>    
+                </div>
                 </div>
                 <div class="form-group row">
                     <label for="cpu" class="col-sm-2 col-form-label">Processor</label>
                     <div class="col-sm-10">
-                    <input type="text" class="form-control" id="cpu" name="cpu">
+                    <input type="text" class="form-control" id="cpu" name="cpu" value="<?= old('cpu'); ?>">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="ram" class="col-sm-2 col-form-label">Memory/RAM</label>
                     <div class="col-sm-10">
-                    <input type="text" class="form-control" id="ram" name="ram">
+                    <input type="text" class="form-control" id="ram" name="ram" value="<?= old('ram'); ?>">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="hdd" class="col-sm-2 col-form-label">Hardisk</label>
                     <div class="col-sm-10">
-                    <input type="text" class="form-control" id="hdd" name="hdd">
+                    <input type="text" class="form-control" id="hdd" name="hdd" value="<?= old('hdd'); ?>">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="foto" class="col-sm-2 col-form-label">Foto</label>
                     <div class="col-sm-10">
-                    <input type="text" class="form-control" id="foto" name="foto">
+                    <input type="text" class="form-control" id="foto" name="foto" value="<?= old('foto'); ?>">
                     </div>
                 </div>
                 <div class="form-group row">
