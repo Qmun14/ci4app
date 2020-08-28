@@ -21,7 +21,7 @@
                 <div class="form-group row">
                     <label for="cpu" class="col-sm-2 col-form-label">Processor</label>
                     <div class="col-sm-10">
-                    <input type="text" class="form-control" id="cpu" name="cpu" value="<<?= (old('cpu')) ? old('cpu') : $computer['cpu'] ?>">
+                    <input type="text" class="form-control" id="cpu" name="cpu" value="<?= (old('cpu')) ? old('cpu') : $computer['cpu'] ?>">
                     </div>
                 </div>
                 <div class="form-group row">
