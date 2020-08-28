@@ -107,7 +107,10 @@ Catatan Penting :
 
                                        }
                            method url_title() di atas untuk menggenerate $slug dengan data dari field 'vendor'.
-                           method withInput()->with() di atas untuk menyimpan data pada fungsi session() bawaan CI4 nya supaya bisa dipakai di mana aja.                         
+                           method withInput()->with() di atas untuk menyimpan data pada fungsi session() bawaan CI4 nya supaya bisa dipakai di mana aja.
+
+                        2. Delete -> 
+                        3. Edit ->                         
 
 
 2. Folder Public -> - Folder tempat menyimpan Asset Project.

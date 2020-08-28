@@ -32,7 +32,9 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Pages::index');
 $routes->get('/computers/create', 'Computers::create');
-$routes->get('/computers/(:segment)', 'Computers::detail/$1');
+$routes->get('/computers/edit/(:segment)', 'Computers::edit/$1');
+$routes->delete('/computers/(:num)', 'Computers::delete/$1');
+$routes->get('/computers/(:any)', 'Computers::detail/$1');
 
 /**
  * --------------------------------------------------------------------
